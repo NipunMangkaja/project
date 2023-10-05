@@ -371,7 +371,7 @@
 
 .home-page .image-2 {
   height: 188px;
-  left: 242px;
+  left: 190px;
   object-fit: cover;
   position: absolute;
   top: 218px;
@@ -401,7 +401,7 @@
   font-family: "Overpass Mono", Helvetica;
   font-size: 16px;
   font-weight: 400;
-  left: 251px;
+  left: 200px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
@@ -562,7 +562,7 @@
 }
 
 .home-page .overlap-6 {
-  background-image: url(../../../static/img/image-17.png);
+  background-image: url(../../../static/img/image-177.png);
   background-position: 50% 50%;
   background-size: cover;
   height: 589px;
@@ -571,7 +571,7 @@
 }
 
 .home-page .FORMALS-styles-wrapper {
-  background-image: url(../../../static/img/image-16.png);
+  background-image: url(../../../static/img/image-166.png);
   background-position: 50% 50%;
   background-size: cover;
   height: 165px;
@@ -597,7 +597,7 @@
 }
 
 .home-page .CASUALS-styles-wrapper {
-  background-image: url(../../../static/img/image-15.png);
+  background-image: url(../../../static/img/image-155.png);
   background-position: 50% 50%;
   background-size: cover;
   height: 165px;
