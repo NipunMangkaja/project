@@ -10,7 +10,7 @@ const Products = () => {
         // Perform data fetching or other side effects here
         const fetchData = async () => {
             try {
-                const response = await axios.get("http://127.0.0.1:8000/"); // Replace 'your-api-endpoint' with the actual API URL
+                const response = await axios.get("http://127.0.0.1:8000/test3"); // Replace 'your-api-endpoint' with the actual API URL
                 setDetails(response.data.item_data);
                 console.log(response.data); // Update the 'details' state with the fetched data
             } catch (error) {
