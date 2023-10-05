@@ -22,6 +22,6 @@ from myapp.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('myapp/', include('myapp.urls')),
-    path('', test3, name="anything"),
-    # path('', test2, name="anything"),
+    path('test2', test2, name="test2"),
+    path('test3', test3, name="test3"),
 ]
