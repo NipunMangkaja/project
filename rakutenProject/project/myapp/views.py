@@ -114,28 +114,30 @@ def test2(request):
 def test3(request):
     if request.method == 'POST':
         # Get the selected region from the POST data
-        selected_region = request.POST.get('region')
+        
+        data = json.loads(request.body.decode('utf-8'))
+        selected_region = data.get('region')
 
         # Do something with the selected region, such as storing it in the session or processing it
         params = {
             'keyword':selected_region, # maybe add お土産 keyword automatically here??
             'hits':30,
         }            
-        # items = get_api_data(params)
-        # item_data=[]
-        # for i in items:
-        #     item = i['Item']
-        #     itemName = item['itemName']
-        #     image = item['mediumImageUrls'][0]['imageUrl']
-        #     price = item['itemPrice']
-        #     query = {
-        #         'title':itemName,
-        #         'image':image,
-        #         'price':price
-        #         }
-        #     item_data.append(query)
+        items = get_api_data(params)
+        item_data=[]
+        for i in items:
+            item = i['Item']
+            itemName = item['itemName']
+            image = item['mediumImageUrls'][0]['imageUrl']
+            price = item['itemPrice']
+            query = {
+                'title':itemName,
+                'image':image,
+                'price':price
+                }
+            item_data.append(query)
         # Return a JsonResponse if needed
-        return JsonResponse({'status': 'success', 'region': selected_region,})
+        return JsonResponse({'status': 'success', 'region': selected_region, 'item_data':item_data,})
     # elif request.method == 'GET':
     #     return JsonResponse({'status': 'test', 'region': selected_region})
 
