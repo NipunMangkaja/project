@@ -1,19 +1,54 @@
 import React, { useState } from "react";
 import "./style.css";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-
-export const HomePage = () => {
+const HomePage = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [showTrendingContent, setShowTrendingContent] = useState(false); // Add state for trending content
-  const regions = ["Kanto", "Kansai", "Tohoku", "Hokkaido", "Shikoku", "Chugoku", "Okinawa"];
+  const regions = [
+    "Kanto",
+    "Kansai",
+    "Tohoku",
+    "Hokkaido",
+    "Shikoku",
+    "Chugoku",
+    "Okinawa",
+  ];
+
+  const navigate = useNavigate();
 
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
   };
-  
+
   const toggleTrendingContent = () => {
     setShowTrendingContent(!showTrendingContent);
   };
+
+  function handleDropdownItemClick(selectedRegion) {
+    // Perform any necessary actions (e.g., sending data to Django)
+    // ...
+    console.log(selectedRegion);
+
+    axios
+      .post("http://127.0.0.1:8000/test3", {
+        region: selectedRegion,
+      })
+      .then((response) => {
+        // Handle the response if needed
+        console.log("Region selection successful:", response.data);
+        const productList = response.data;
+        navigate(`/products`, { state: { productList } });
+        console.log("navigated!");
+      })
+      .catch((error) => {
+        // Handle errors if any
+        console.error("Error selecting region:", error);
+      });
+    // Navigate to the "Products" page with the selected region
+  }
+
   return (
     <div className="home-page">
       <div className="div">
@@ -22,17 +57,27 @@ export const HomePage = () => {
           <div className="text-input-container">
             <div className="overlap-group">
               <div className="overlap-2">
-                <div className="BEYOURBEST-strip">Discover Japan&#39;s Treasures</div>
+                <div className="BEYOURBEST-strip">
+                  Discover Japan&#39;s Treasures
+                </div>
                 <div className="text-input-2" />
               </div>
               <div className="overlap-3">
-                <div className="BEYOURBEST-strip">Discover Japan&#39;s Treasures</div>
+                <div className="BEYOURBEST-strip">
+                  Discover Japan&#39;s Treasures
+                </div>
                 <div className="text-input-3" />
               </div>
               <div className="text-wrapper">Discover Japan&#39;s Treasures</div>
-              <div className="BEYOURBEST-strip-2">Discover Japan&#39;s Treasures</div>
-              <div className="BEYOURBEST-strip-3">Discover Japan&#39;s Treasures</div>
-              <div className="BEYOURBEST-strip-4">Discover Japan&#39;s Treasures</div>
+              <div className="BEYOURBEST-strip-2">
+                Discover Japan&#39;s Treasures
+              </div>
+              <div className="BEYOURBEST-strip-3">
+                Discover Japan&#39;s Treasures
+              </div>
+              <div className="BEYOURBEST-strip-4">
+                Discover Japan&#39;s Treasures
+              </div>
               <div className="overlap-group-2">
                 <div className="test">Discover Japan&#39;s Treasures</div>
                 <div className="text-input-4" />
@@ -43,18 +88,68 @@ export const HomePage = () => {
               <div className="text-input-8" />
             </div>
           </div>
-          <img className="image" alt="Image" src="/img/japanmap.png" usemap="#workmap"/>
+          <img
+            className="image"
+            alt="Image"
+            src="/img/japanmap.png"
+            usemap="#workmap"
+          />
           <map name="workmap">
-  <area shape="rect" coords="350,400,450,500" id="Kanto"href="https://en.wikipedia.org/wiki/Kant%C5%8D_region"/>
-  <area shape="rect" coords="350,40,600,150" id="Hokkaido"href="https://en.wikipedia.org/wiki/Hokkaido"/> 
-  <area shape="rect" coords="200,450,300,600" id="Kansai"href="https://en.wikipedia.org/wiki/Kansai_region"/>
-  <area shape="rect" coords="0,600,120,750" id="Kyushu"href="https://en.wikipedia.org/wiki/Kyushu"/>
-  <area shape="rect" coords="350,200,450,390" id="Hokkaido"href="https://en.wikipedia.org/wiki/T%C5%8Dhoku_region"/>
-  <area shape="rect" coords="250,350,349,520" id="Chubu"href="https://en.wikipedia.org/wiki/Ch%C5%ABbu_region"/>
-  <area shape="rect" coords="400,550,600,750" id="Okinawa"href="https://en.wikipedia.org/wiki/Okinawa_Prefecture"/>
-  <area shape="rect" coords="121,550,199,750" id="Shikoku"href="https://en.wikipedia.org/wiki/Shikoku"/>
-  <area shape="rect" coords="50,450,199,549" id="Chugoku"href="https://en.wikipedia.org/wiki/Ch%C5%ABgoku_region"/>
-    </map>
+            <area
+              shape="rect"
+              coords="350,400,450,500"
+              id="Kanto"
+              href="https://en.wikipedia.org/wiki/Kant%C5%8D_region"
+            />
+            <area
+              shape="rect"
+              coords="350,40,600,150"
+              id="Hokkaido"
+              href="https://en.wikipedia.org/wiki/Hokkaido"
+            />
+            <area
+              shape="rect"
+              coords="200,450,300,600"
+              id="Kansai"
+              href="https://en.wikipedia.org/wiki/Kansai_region"
+            />
+            <area
+              shape="rect"
+              coords="0,600,120,750"
+              id="Kyushu"
+              href="https://en.wikipedia.org/wiki/Kyushu"
+            />
+            <area
+              shape="rect"
+              coords="350,200,450,390"
+              id="Hokkaido"
+              href="https://en.wikipedia.org/wiki/T%C5%8Dhoku_region"
+            />
+            <area
+              shape="rect"
+              coords="250,350,349,520"
+              id="Chubu"
+              href="https://en.wikipedia.org/wiki/Ch%C5%ABbu_region"
+            />
+            <area
+              shape="rect"
+              coords="400,550,600,750"
+              id="Okinawa"
+              href="https://en.wikipedia.org/wiki/Okinawa_Prefecture"
+            />
+            <area
+              shape="rect"
+              coords="121,550,199,750"
+              id="Shikoku"
+              href="https://en.wikipedia.org/wiki/Shikoku"
+            />
+            <area
+              shape="rect"
+              coords="50,450,199,549"
+              id="Chugoku"
+              href="https://en.wikipedia.org/wiki/Ch%C5%ABgoku_region"
+            />
+          </map>
           <div className="text-input-9">
             <button className="button">
               <div className="text-wrapper-2">New Arrival</div>
@@ -64,26 +159,46 @@ export const HomePage = () => {
             </button>
 
             <button className="button-2" onClick={toggleDropdown}>
-        <div className="text-wrapper-2">Regions</div>
-        <img className="vector" alt="Vector" src="/img/vector.svg" />
-      </button>
-      {showDropdown && (
-        <div className="dropdown-menu">
-          <ul>
-            {regions.map((region, index) => (
-              <li key={index}>{region}</li>
-            ))}
-          </ul>
-        </div>
-      )}
+              <div className="text-wrapper-2">Regions</div>
+              <img className="vector" alt="Vector" src="/img/vector.svg" />
+            </button>
+            {showDropdown && (
+              <div className="dropdown-menu">
+                <ul>
+                  {regions.map((region, index) => (
+                    <li
+                      key={index}
+                      onClick={() => handleDropdownItemClick(region)}
+                    >
+                      {region}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
             <button className="enabled-wrapper">
               <div className="text-wrapper-2">Essentials</div>
             </button>
           </div>
           <img className="img" id="Kyoto" alt="Image" src="/img/kyoto1.png" />
-          <img className="image-2" id="Tokyo "alt="Image" src="/img/tokyoicon.png" />
-          <img className="image-3" id="Nagoya" alt="Image" src="/img/nagoya.png" />
-          <img className="image-hiro" id="Hiroshima" alt="Image" src="/img/hirodome.png" />
+          <img
+            className="image-2"
+            id="Tokyo "
+            alt="Image"
+            src="/img/tokyoicon.png"
+          />
+          <img
+            className="image-3"
+            id="Nagoya"
+            alt="Image"
+            src="/img/nagoya.png"
+          />
+          <img
+            className="image-hiro"
+            id="Hiroshima"
+            alt="Image"
+            src="/img/hirodome.png"
+          />
           <div className="text-wrapper-4">Tokyo</div>
           <div className="text-wrapper-5">Kyoto</div>
           <div className="text-wrapper-6">Nagoya</div>
@@ -131,8 +246,8 @@ export const HomePage = () => {
                 </span>
               </p>
               <p className="text-wrapper-8">
-                Stay Connected with Us! Discover the best omiyage from Japan and be in the know about exclusive offers
-                and cultural insights
+                Stay Connected with Us! Discover the best omiyage from Japan and
+                be in the know about exclusive offers and cultural insights
                 <br />
                 <br /> [Explore More]
               </p>
@@ -180,7 +295,11 @@ export const HomePage = () => {
         <div className="container-2">
           <div className="container-3">
             <div className="container-4">
-              <img className="image-10" alt="Image" src="/img/tokyobanana.png" />
+              <img
+                className="image-10"
+                alt="Image"
+                src="/img/tokyobanana.png"
+              />
               <div className="overlap-group-5">
                 <div className="cargotrousers">Tokyo Banana</div>
                 <div className="rs">Rs 2,299.00</div>
@@ -214,7 +333,6 @@ export const HomePage = () => {
                 <div className="rs">Rs 2,299.00</div>
               </div>
             </div>
-           
           </div>
           <div className="newarrivals">Best Sellers</div>
         </div>
@@ -226,3 +344,5 @@ export const HomePage = () => {
     </div>
   );
 };
+
+export default HomePage;
