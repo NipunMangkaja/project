@@ -132,11 +132,13 @@ def test3(request):
             image = item['mediumImageUrls'][0]['imageUrl']
             price = item['itemPrice']
             reviewAverage = item['reviewAverage']
+            itemUrl = item['itemUrl']
             query = {
                 'title':itemName,
                 'image':image,
                 'price':price,
-                'reviewAverage':reviewAverage
+                'reviewAverage':reviewAverage,
+                'itemUrl':itemUrl
                 }
             item_data.append(query)
         # Return a JsonResponse if needed
