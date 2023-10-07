@@ -31,16 +31,15 @@ const Products = () => {
           return b.price - a.price;
         }
       });
+    } else if (criteria === "reviewAverage") {
+      sortedProducts.sort((a, b) => {
+        if (sortOrder === "asc") {
+          return a.reviewAverage - b.reviewAverage;
+        } else {
+          return b.reviewAverage - a.reviewAverage;
+        }
+      });
     }
-    // else if (criteria === "review") {
-    //   sortedProducts.sort((a, b) => {
-    //     if (sortOrder === "asc") {
-    //       return a.review - b.review;
-    //     } else {
-    //       return b.review - a.review;
-    //     }
-    //   });
-    // }
 
     productList = sortedProducts;
   };
@@ -108,11 +107,11 @@ const Products = () => {
       <div className="vertical-container">
         <div className="overlap-3">
           <div className="text-wrapper-8">OmiyageOdyssey Collection</div>
-          <img
+          {/* <img
             className="image-6"
             alt="Image"
             src={require(".//image-6.png")}
-          />
+          /> */}
           <div className="text-input-4">
             <div className="all-sort-options">
               <input
@@ -150,6 +149,11 @@ const Products = () => {
                     isOpen ? "visible" : ""
                   }`}
                   value="review-up"
+                  onClick={() => {
+                    setSortCriteria("reviewAverage");
+                    setSortOrder("asc");
+                    sortProducts("reviewAverage");
+                  }}
                 />
                 <input
                   type="button"
@@ -157,6 +161,11 @@ const Products = () => {
                     isOpen ? "visible" : ""
                   }`}
                   value="review-down"
+                  onClick={() => {
+                    setSortCriteria("reviewAverage");
+                    setSortOrder("desc");
+                    sortProducts("reviewAverage");
+                  }}
                 />
               </div>
             </div>
