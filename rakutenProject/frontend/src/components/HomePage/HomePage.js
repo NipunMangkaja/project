@@ -91,7 +91,7 @@ const HomePage = () => {
           <img
             className="image"
             alt="Image"
-            src="/img/japanmap.png"
+            src={require(".//japanmap.png")}
             usemap="#workmap"
           />
           <map name="workmap">
@@ -180,24 +180,29 @@ const HomePage = () => {
               <div className="text-wrapper-2">Essentials</div>
             </button>
           </div>
-          <img className="img" id="Kyoto" alt="Image" src="/img/kyoto1.png" />
+          <img
+            className="img"
+            id="Kyoto"
+            alt="Image"
+            src={require(".//kyoto1.png")}
+          />
           <img
             className="image-2"
             id="Tokyo "
             alt="Image"
-            src="/img/tokyoicon.png"
+            src={require(".//tokyoicon.png")}
           />
           <img
             className="image-3"
             id="Nagoya"
             alt="Image"
-            src="/img/nagoya.png"
+            src={require(".//nagoya.png")}
           />
           <img
             className="image-hiro"
             id="Hiroshima"
             alt="Image"
-            src="/img/hirodome.png"
+            src={require(".//hirodome.png")}
           />
           <div className="text-wrapper-4">Tokyo</div>
           <div className="text-wrapper-5">Kyoto</div>
@@ -208,7 +213,11 @@ const HomePage = () => {
           <div className="text-input-10" />
           <div className="tooltip">
             <div className="overlap-group-3">
-              <img className="image-4" alt="Image" src="/img/image.png" />
+              <img
+                className="image-4"
+                alt="Image"
+                src={require(".//image.png")}
+              />
               <p className="p">
                 <span className="span">
                   Corporate Info
@@ -267,7 +276,11 @@ const HomePage = () => {
           </div>
           <div className="streetstyle">Food</div>
           <div className="rectangle" />
-          <img className="image-5" alt="Image" src="/img/image-55.png" />
+          <img
+            className="image-5"
+            alt="Image"
+            src={require(".//image-55.png")}
+          />
           <div className="text-wrapper-10">和菓子</div>
         </div>
         <div className="horizontal-container">
@@ -275,20 +288,36 @@ const HomePage = () => {
             <div className="frame">
               <div className="overlap-group-4">
                 <p className="text-wrapper-11">Super Fast and Free Delivery</p>
-                <img className="image-6" alt="Image" src="/img/image-144.png" />
+                <img
+                  className="image-6"
+                  alt="Image"
+                  src={require(".//image-144.png")}
+                />
               </div>
             </div>
             <div className="container">
               <div className="text-wrapper-12">Super Secure Payment System</div>
-              <img className="image-7" alt="Image" src="/img/image-133.png" />
+              <img
+                className="image-7"
+                alt="Image"
+                src={require(".//image-133.png")}
+              />
             </div>
             <div className="text-input-container-2">
               <div className="non-contactshipping">Non- Contact Shipping</div>
-              <img className="image-8" alt="Image" src="/img/image-122.png" />
+              <img
+                className="image-8"
+                alt="Image"
+                src={require(".//image-122.png")}
+              />
             </div>
             <div className="button-3">
               <div className="moneybackguranteed">Money Back Guranteed</div>
-              <img className="image-9" alt="Image" src="/img/image-111.png" />
+              <img
+                className="image-9"
+                alt="Image"
+                src={require(".//image-111.png")}
+              />
             </div>
           </div>
         </div>
@@ -298,7 +327,7 @@ const HomePage = () => {
               <img
                 className="image-10"
                 alt="Image"
-                src="/img/tokyobanana.png"
+                src={require(".//tokyobanana.png")}
               />
               <div className="overlap-group-5">
                 <div className="cargotrousers">Tokyo Banana</div>
@@ -306,28 +335,44 @@ const HomePage = () => {
               </div>
             </div>
             <div className="switch">
-              <img className="image-11" alt="Image" src="/img/mochi.png" />
+              <img
+                className="image-11"
+                alt="Image"
+                src={require(".//mochi.png")}
+              />
               <div className="overlap-8">
                 <div className="text-wrapper-13">Hagi no Tsuki</div>
                 <div className="rs-2">Rs 2,299.00</div>
               </div>
             </div>
             <div className="container-5">
-              <img className="image-10" alt="Image" src="/img/castella.png" />
+              <img
+                className="image-10"
+                alt="Image"
+                src={require(".//castella.png")}
+              />
               <div className="overlap-group-5">
                 <div className="cargotrousers">Akafuku Mochi</div>
                 <div className="rs">Rs 2,299.00</div>
               </div>
             </div>
             <div className="container-6">
-              <img className="image-11" alt="Image" src="/img/image-22.png" />
+              <img
+                className="image-11"
+                alt="Image"
+                src={require(".//image-22.png")}
+              />
               <div className="overlap-8">
                 <div className="text-wrapper-13">Rokkatei Marusei</div>
                 <div className="rs-2">Rs 2,299.00</div>
               </div>
             </div>
             <div className="card">
-              <img className="image-12" alt="Image" src="/img/shiroi.jpeg" />
+              <img
+                className="image-12"
+                alt="Image"
+                src={require(".//shiroi.jpeg")}
+              />
               <div className="overlap-9">
                 <div className="cargotrousers">Shiroi Koibito</div>
                 <div className="rs">Rs 2,299.00</div>

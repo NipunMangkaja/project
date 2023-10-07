@@ -72,19 +72,35 @@ const Products = () => {
       </div>
       <div className="hero">
         <div className="overlap">
-          <img className="img" alt="Image" src="/img/image-1.png" />
-          <img className="image-2" alt="Image" src="/img/Yatsuhashi.png" />
+          <img className="img" alt="Image" src={require(".//image-1.png")} />
+          <img
+            className="image-2"
+            alt="Image"
+            src={require(".//Yatsuhashi.png")}
+          />
           <div className="overlapGroups">
             <div className="overlap-group-2">
               <div className="text-wrapper-4">With love.</div>
-              <img className="image-5" alt="Image" src="/img/image-5.png" />
+              <img
+                className="image-5"
+                alt="Image"
+                src={require(".//image-5.png")}
+              />
             </div>
             <div className="overlap-2">
               <p className="text-wrapper-3">
                 Elevate Gifting with a Touch of Japan
               </p>
-              <img className="image-3" alt="Image" src="/img/image-4.png" />
-              <img className="image-4" alt="Image" src="/img/image-4.png" />
+              <img
+                className="image-3"
+                alt="Image"
+                src={require(".//image-4.png")}
+              />
+              <img
+                className="image-4"
+                alt="Image"
+                src={require(".//image-4.png")}
+              />
             </div>
           </div>
         </div>
@@ -92,7 +108,11 @@ const Products = () => {
       <div className="vertical-container">
         <div className="overlap-3">
           <div className="text-wrapper-8">OmiyageOdyssey Collection</div>
-          <img className="image-6" alt="Image" src="/img/image-6.png" />
+          <img
+            className="image-6"
+            alt="Image"
+            src={require(".//image-6.png")}
+          />
           <div className="text-input-4">
             <div className="all-sort-options">
               <input
@@ -192,7 +212,7 @@ const Products = () => {
                 <li>Cookie Settings</li>
               </ul>
             </div>
-            <img className="image" alt="Image" src="/img/image.png" />
+            <img className="image" alt="Image" src={require(".//image.png")} />
           </div>
         </div>
       </div>
