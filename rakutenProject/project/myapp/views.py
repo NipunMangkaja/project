@@ -120,7 +120,8 @@ def test3(request):
 
         # Do something with the selected region, such as storing it in the session or processing it
         params = {
-            'keyword':selected_region, # maybe add お土産 keyword automatically here??
+            'keyword':selected_region,
+            'keyword':'お土産', # add お土産 keyword automatically here
             'hits':30,
         }            
         items = get_api_data(params)
@@ -130,10 +131,12 @@ def test3(request):
             itemName = item['itemName']
             image = item['mediumImageUrls'][0]['imageUrl']
             price = item['itemPrice']
+            reviewAverage = item['reviewAverage']
             query = {
                 'title':itemName,
                 'image':image,
-                'price':price
+                'price':price,
+                'reviewAverage':reviewAverage
                 }
             item_data.append(query)
         # Return a JsonResponse if needed
