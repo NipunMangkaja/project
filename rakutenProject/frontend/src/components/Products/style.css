@@ -386,6 +386,18 @@ body {
   align-items: center;
 }
 
+.products .overlap-3::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("image-6.png");
+  background-repeat: repeat;
+  background-size: auto;
+}
+
 .productsList {
   display: flex;
   flex-direction: row;
@@ -604,7 +616,7 @@ body {
   position: absolute;
   top: 0;
   max-width: 100%;
-  background-repeat: repeat-y;
+  background-repeat: repeat;
 }
 
 .products .text-wrapper-8 {
