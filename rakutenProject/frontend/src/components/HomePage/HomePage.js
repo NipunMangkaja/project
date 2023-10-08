@@ -160,7 +160,7 @@ const HomePage = () => {
 
             <button className="button-2" onClick={toggleDropdown}>
               <div className="text-wrapper-2">Regions</div>
-              <img className="vector" alt="Vector" src="/img/vector.svg" />
+              <img className="vector" alt="Vector" src={require(".//vector.svg")}/>
             </button>
             {showDropdown && (
               <div className="dropdown-menu">
