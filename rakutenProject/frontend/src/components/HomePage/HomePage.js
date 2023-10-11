@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import ProductCards from "./ProductCards";
 
 const HomePage = () => {
   const [showDropdown, setShowDropdown] = useState(false);
-  const [showTrendingContent, setShowTrendingContent] = useState(false); // Add state for trending content
+  const [showTrendingContent, setShowTrendingContent] = useState(false); // Add state
+  const [bestsellerList, setBestsellerList] = useState([]);
   const regions = [
     "Kanto",
     "Kansai",
@@ -17,6 +19,22 @@ const HomePage = () => {
   ];
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    axios
+      .post("http://127.0.0.1:8000/test3", {
+        region: "Tokyo", // You can define selectedRegion if needed
+      })
+      .then((response) => {
+        // Handle the response and update the state with the product list
+        console.log("Region selection successful:", response.data);
+        setBestsellerList(response.data.item_data);
+      })
+      .catch((error) => {
+        // Handle errors if any
+        console.error("Error selecting region:", error);
+      });
+  }, []);
 
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
@@ -51,42 +69,48 @@ const HomePage = () => {
 
   return (
     <div className="home-page">
-      <div className="div">
-        <div className="overlap">
-          <div className="text-input" />
-          <div className="text-input-container">
-            <div className="overlap-group">
-              <div className="overlap-2">
-                <div className="BEYOURBEST-strip">
-                  Discover Japan&#39;s Treasures
-                </div>
-                <div className="text-input-2" />
-              </div>
-              <div className="overlap-3">
-                <div className="BEYOURBEST-strip">
-                  Discover Japan&#39;s Treasures
-                </div>
-                <div className="text-input-3" />
-              </div>
-              <div className="text-wrapper">Discover Japan&#39;s Treasures</div>
-              <div className="BEYOURBEST-strip-2">
-                Discover Japan&#39;s Treasures
-              </div>
-              <div className="BEYOURBEST-strip-3">
-                Discover Japan&#39;s Treasures
-              </div>
-              <div className="BEYOURBEST-strip-4">
-                Discover Japan&#39;s Treasures
-              </div>
-              <div className="overlap-group-2">
-                <div className="test">Discover Japan&#39;s Treasures</div>
-                <div className="text-input-4" />
-              </div>
-              <div className="text-input-5" />
-              <div className="text-input-6" />
-              <div className="text-input-7" />
-              <div className="text-input-8" />
+      <div className="text-input-container-4">
+        <div className="home-menu">Home</div>
+        <div className="customerservice">Customer Service</div>
+      </div>
+      <div className="overlap">
+        <div className="hero">
+          <div className="text-input-9">
+            {/* <button className="button">
+              <div className="text-wrapper-2">New Arrival</div>
+            </button>
+            <button className="div-wrapper">
+              <div className="text-wrapper-2">Trending Now</div>
+            </button> */}
+            <div className="button-2">
+              <input
+                type="button"
+                className="text-wrapper-3"
+                // onClick={toggleDropdown}
+                value="Regions"
+              />
             </div>
+
+            <div className="dropdown-menu">
+              <div className="regions">
+                {regions.map((region, index) => (
+                  <input
+                    key={index}
+                    onClick={() => handleDropdownItemClick(region)}
+                    className="region"
+                    value={region}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* <div className="text-wrapper-4">Tokyo</div>
+            <div className="text-wrapper-5">Kyoto</div>
+            <div className="text-wrapper-6">Nagoya</div>
+            <div className="text-wrapper-hiro">Hiroshima</div> */}
+            {/* <button className="enabled-wrapper">
+              <div className="text-wrapper-2">Essentials</div>
+            </button> */}
           </div>
           <img
             className="image"
@@ -94,296 +118,233 @@ const HomePage = () => {
             src={require(".//japanmap.png")}
             usemap="#workmap"
           />
-          <map name="workmap">
-            <area
-              shape="rect"
-              coords="350,400,450,500"
-              id="Kanto"
-              href="https://en.wikipedia.org/wiki/Kant%C5%8D_region"
-            />
-            <area
-              shape="rect"
-              coords="350,40,600,150"
-              id="Hokkaido"
-              href="https://en.wikipedia.org/wiki/Hokkaido"
-            />
-            <area
-              shape="rect"
-              coords="200,450,300,600"
-              id="Kansai"
-              href="https://en.wikipedia.org/wiki/Kansai_region"
-            />
-            <area
-              shape="rect"
-              coords="0,600,120,750"
-              id="Kyushu"
-              href="https://en.wikipedia.org/wiki/Kyushu"
-            />
-            <area
-              shape="rect"
-              coords="350,200,450,390"
-              id="Hokkaido"
-              href="https://en.wikipedia.org/wiki/T%C5%8Dhoku_region"
-            />
-            <area
-              shape="rect"
-              coords="250,350,349,520"
-              id="Chubu"
-              href="https://en.wikipedia.org/wiki/Ch%C5%ABbu_region"
-            />
-            <area
-              shape="rect"
-              coords="400,550,600,750"
-              id="Okinawa"
-              href="https://en.wikipedia.org/wiki/Okinawa_Prefecture"
-            />
-            <area
-              shape="rect"
-              coords="121,550,199,750"
-              id="Shikoku"
-              href="https://en.wikipedia.org/wiki/Shikoku"
-            />
-            <area
-              shape="rect"
-              coords="50,450,199,549"
-              id="Chugoku"
-              href="https://en.wikipedia.org/wiki/Ch%C5%ABgoku_region"
-            />
-          </map>
-          <div className="text-input-9">
-            <button className="button">
-              <div className="text-wrapper-2">New Arrival</div>
-            </button>
-            <button className="div-wrapper">
-              <div className="text-wrapper-2">Trending Now</div>
-            </button>
+          <div className="places">
+            {/* <map name="workmap">
+          <area
+            shape="rect"
+            coords="350,400,450,500"
+            id="Kanto"
+            href="https://en.wikipedia.org/wiki/Kant%C5%8D_region"
+          />
+          <area
+            shape="rect"
+            coords="350,40,600,150"
+            id="Hokkaido"
+            href="https://en.wikipedia.org/wiki/Hokkaido"
+          />
+          <area
+            shape="rect"
+            coords="200,450,300,600"
+            id="Kansai"
+            href="https://en.wikipedia.org/wiki/Kansai_region"
+          />
+          <area
+            shape="rect"
+            coords="0,600,120,750"
+            id="Kyushu"
+            href="https://en.wikipedia.org/wiki/Kyushu"
+          />
+          <area
+            shape="rect"
+            coords="350,200,450,390"
+            id="Hokkaido"
+            href="https://en.wikipedia.org/wiki/T%C5%8Dhoku_region"
+          />
+          <area
+            shape="rect"
+            coords="250,350,349,520"
+            id="Chubu"
+            href="https://en.wikipedia.org/wiki/Ch%C5%ABbu_region"
+          />
+          <area
+            shape="rect"
+            coords="400,550,600,750"
+            id="Okinawa"
+            href="https://en.wikipedia.org/wiki/Okinawa_Prefecture"
+          />
+          <area
+            shape="rect"
+            coords="121,550,199,750"
+            id="Shikoku"
+            href="https://en.wikipedia.org/wiki/Shikoku"
+          />
+          <area
+            shape="rect"
+            coords="50,450,199,549"
+            id="Chugoku"
+            href="https://en.wikipedia.org/wiki/Ch%C5%ABgoku_region"
+          />
+        </map> */}
 
-            <button className="button-2" onClick={toggleDropdown}>
-              <div className="text-wrapper-2">Regions</div>
-              <img className="vector" alt="Vector" src={require(".//vector.svg")}/>
-            </button>
-            {showDropdown && (
-              <div className="dropdown-menu">
-                <ul>
-                  {regions.map((region, index) => (
-                    <li
-                      key={index}
-                      onClick={() => handleDropdownItemClick(region)}
-                    >
-                      {region}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            <button className="enabled-wrapper">
-              <div className="text-wrapper-2">Essentials</div>
-            </button>
+            <img
+              className="kyoto icon"
+              id="Kyoto"
+              alt="Image"
+              src={require(".//sapporo-icon.png")}
+              onClick={() => handleDropdownItemClick("札幌")}
+            />
+            <img
+              className="tokyo icon"
+              id="Tokyo"
+              alt="Image"
+              src={require(".//tokyo-icon.png")}
+              onClick={() => handleDropdownItemClick("東京")}
+            />
+            <img
+              className="image-3 icon"
+              id="Nagoya"
+              alt="Image"
+              src={require(".//nagoya-icon.png")}
+              onClick={() => handleDropdownItemClick("名古屋")}
+            />
+            <img
+              className="image-hiro icon"
+              id="Hiroshima"
+              alt="Image"
+              src={require(".//hiroshima-icon.png")}
+              onClick={() => handleDropdownItemClick("広島")}
+            />
           </div>
-          <img
-            className="img"
-            id="Kyoto"
-            alt="Image"
-            src={require(".//kyoto1.png")}
-          />
-          <img
-            className="image-2"
-            id="Tokyo "
-            alt="Image"
-            src={require(".//tokyoicon.png")}
-          />
-          <img
-            className="image-3"
-            id="Nagoya"
-            alt="Image"
-            src={require(".//nagoya.png")}
-          />
-          <img
-            className="image-hiro"
-            id="Hiroshima"
-            alt="Image"
-            src={require(".//hirodome.png")}
-          />
-          <div className="text-wrapper-4">Tokyo</div>
-          <div className="text-wrapper-5">Kyoto</div>
-          <div className="text-wrapper-6">Nagoya</div>
-          <div className="text-wrapper-hiro">Hiroshima</div>
         </div>
-        <div className="overlap-4">
-          <div className="text-input-10" />
-          <div className="tooltip">
-            <div className="overlap-group-3">
-              <img
-                className="image-4"
-                alt="Image"
-                src={require(".//image.png")}
-              />
-              <p className="p">
-                <span className="span">
-                  Corporate Info
-                  <br />
-                </span>
-                <span className="text-wrapper-7">
-                  Career
-                  <br />
-                </span>
-                <span className="span">
-                  Press
-                  <br />
-                  Investor relations
-                  <br />
-                  Corporate governance
-                </span>
-              </p>
-              <p className="div-2">
-                <span className="span">
-                  Help
-                  <br />
-                </span>
-                <span className="text-wrapper-7">
-                  Customer Service
-                  <br />
-                </span>
-                <span className="span">
-                  Legal &amp; Privacy
-                  <br />
-                  Contact
-                  <br />
-                  Report a scam
-                  <br />
-                  Cookie Settings
-                </span>
-              </p>
-              <p className="text-wrapper-8">
-                Stay Connected with Us! Discover the best omiyage from Japan and
-                be in the know about exclusive offers and cultural insights
+      </div>
+      <div className="overlap-group">
+        <div className="overlap-2">
+          <div className="BEYOURBEST-strip">Discover Japan&#39;s Treasures</div>
+          <div className="text-input-2" />
+        </div>
+        <div className="overlap-2">
+          <div className="BEYOURBEST-strip">Discover Japan&#39;s Treasures</div>
+          <div className="text-input-2" />
+        </div>
+        <div className="overlap-2">
+          <div className="BEYOURBEST-strip">Discover Japan&#39;s Treasures</div>
+          <div className="text-input-2" />
+        </div>
+        <div className="overlap-2">
+          <div className="BEYOURBEST-strip">Discover Japan&#39;s Treasures</div>
+          <div className="text-input-2" />
+        </div>
+        <div className="overlap-2">
+          <div className="BEYOURBEST-strip">Discover Japan&#39;s Treasures</div>
+          <div className="text-input-2" />
+        </div>
+        <div className="overlap-2">
+          <div className="BEYOURBEST-strip">Discover Japan&#39;s Treasures</div>
+          <div className="text-input-2" />
+        </div>
+      </div>
+      <div className="overlap-5">
+        <div className="Japanese-styles-wrapper">
+          <img className="Japanese-snack" src={require(".//image-55.png")} />
+          <div className="Japanese-text-container">
+            <p>和菓子</p>
+          </div>
+        </div>
+        <div className="overlap-6">
+          <div className="FORMALS-styles-wrapper">
+            <img className="Western-snack" src={require(".//image-166.png")} />
+
+            <div className="text-wrapper-9">
+              <p>洋菓子</p>
+            </div>
+          </div>
+          <div className="CASUALS-styles-wrapper">
+            <img className="Other-snack" src={require(".//image-155.png")} />
+
+            <div className="text-wrapper-9">
+              <p>その他</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="horizontal-container">
+        <div className="frame">
+          <div className="delivery">
+            <img
+              className="image-6"
+              alt="Image"
+              src={require(".//image-144.png")}
+            />
+            <div className="overlap-group-4">Super Fast and Free Delivery</div>
+          </div>
+        </div>
+        <div className="middle">
+          <div className="text-input-container-2">
+            <img
+              className="image-8"
+              alt="Image"
+              src={require(".//image-122.png")}
+            />
+            <div className="non-contactshipping">Non- Contact Shipping</div>
+          </div>
+          <div className="button-3">
+            <img
+              className="image-9"
+              alt="Image"
+              src={require(".//image-111.png")}
+            />
+            <div className="moneybackguranteed">Money Back Guranteed</div>
+          </div>
+        </div>
+        <div className="container">
+          <div className="payment">
+            <img
+              className="image-7"
+              alt="Image"
+              src={require(".//image-133.png")}
+            />
+            <div className="text-wrapper-12">Super Secure Payment System</div>
+          </div>
+        </div>
+      </div>
+      <div className="container-2">
+        <div className="newarrivals">Best Sellers</div>
+        <div className="container-3">
+          {bestsellerList.map((product) => (
+            <ProductCards key={product.id} product={product} />
+          ))}
+        </div>
+      </div>
+      <div className="tooltip">
+        <div className="foot-overlap-group">
+          <div className="pAndText2">
+            <p className="foot-p">
+              <span className="foot-text-wrapper">
+                Corporate Info
                 <br />
-                <br /> [Explore More]
-              </p>
-            </div>
+              </span>
+              <ul className="span">
+                <li>Career</li>
+                <li>Press</li>
+                <li>Investor relations</li>
+                <li>Corporate governance</li>
+                <li>Cookie Settings</li>
+              </ul>
+            </p>
+            <p className="foot-text-wrapper-2">
+              Stay Connected with Us! Discover the best omiyage from Japan and
+              be in the know about exclusive offers and cultural insights
+              <br />
+              <br /> [Explore More]
+            </p>
           </div>
-        </div>
-        <div className="overlap-5">
-          <div className="overlap-wrapper">
-            <div className="overlap-6">
-              <div className="FORMALS-styles-wrapper">
-                <div className="text-wrapper-9">洋菓子</div>
-              </div>
-              <div className="CASUALS-styles-wrapper">
-                <div className="text-wrapper-9">その他</div>
-              </div>
+          <div className="div-2AndImage">
+            <div className="div-2">
+              <span className="foot-text-wrapper">Help</span>
+              <ul className="span">
+                <li>Customer Service</li>
+                <li>Legal & Privacy</li>
+                <li>Contact</li>
+                <li>Report a scam</li>
+                <li>Cookie Settings</li>
+              </ul>
             </div>
+            <img
+              className="foot-image"
+              alt="Image"
+              src={require(".//image.png")}
+            />
           </div>
-          <div className="streetstyle">Food</div>
-          <div className="rectangle" />
-          <img
-            className="image-5"
-            alt="Image"
-            src={require(".//image-55.png")}
-          />
-          <div className="text-wrapper-10">和菓子</div>
-        </div>
-        <div className="horizontal-container">
-          <div className="overlap-7">
-            <div className="frame">
-              <div className="overlap-group-4">
-                <p className="text-wrapper-11">Super Fast and Free Delivery</p>
-                <img
-                  className="image-6"
-                  alt="Image"
-                  src={require(".//image-144.png")}
-                />
-              </div>
-            </div>
-            <div className="container">
-              <div className="text-wrapper-12">Super Secure Payment System</div>
-              <img
-                className="image-7"
-                alt="Image"
-                src={require(".//image-133.png")}
-              />
-            </div>
-            <div className="text-input-container-2">
-              <div className="non-contactshipping">Non- Contact Shipping</div>
-              <img
-                className="image-8"
-                alt="Image"
-                src={require(".//image-122.png")}
-              />
-            </div>
-            <div className="button-3">
-              <div className="moneybackguranteed">Money Back Guranteed</div>
-              <img
-                className="image-9"
-                alt="Image"
-                src={require(".//image-111.png")}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="container-2">
-          <div className="container-3">
-            <div className="container-4">
-              <img
-                className="image-10"
-                alt="Image"
-                src={require(".//tokyobanana.png")}
-              />
-              <div className="overlap-group-5">
-                <div className="cargotrousers">Tokyo Banana</div>
-                <div className="rs">Rs 2,299.00</div>
-              </div>
-            </div>
-            <div className="switch">
-              <img
-                className="image-11"
-                alt="Image"
-                src={require(".//mochi.png")}
-              />
-              <div className="overlap-8">
-                <div className="text-wrapper-13">Hagi no Tsuki</div>
-                <div className="rs-2">Rs 2,299.00</div>
-              </div>
-            </div>
-            <div className="container-5">
-              <img
-                className="image-10"
-                alt="Image"
-                src={require(".//castella.png")}
-              />
-              <div className="overlap-group-5">
-                <div className="cargotrousers">Akafuku Mochi</div>
-                <div className="rs">Rs 2,299.00</div>
-              </div>
-            </div>
-            <div className="container-6">
-              <img
-                className="image-11"
-                alt="Image"
-                src={require(".//image-22.png")}
-              />
-              <div className="overlap-8">
-                <div className="text-wrapper-13">Rokkatei Marusei</div>
-                <div className="rs-2">Rs 2,299.00</div>
-              </div>
-            </div>
-            <div className="card">
-              <img
-                className="image-12"
-                alt="Image"
-                src={require(".//shiroi.jpeg")}
-              />
-              <div className="overlap-9">
-                <div className="cargotrousers">Shiroi Koibito</div>
-                <div className="rs">Rs 2,299.00</div>
-              </div>
-            </div>
-          </div>
-          <div className="newarrivals">Best Sellers</div>
-        </div>
-        <div className="text-input-container-4">
-          <div className="home-menu">Home</div>
-          <div className="customerservice">Customer Service</div>
         </div>
       </div>
     </div>
