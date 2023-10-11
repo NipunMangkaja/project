@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./style.css";
 import ProductCards from "./ProductCards";
 
@@ -14,7 +15,7 @@ const Products = () => {
   //     setDetails(mockProducts);
   //   }, []);
   let productList = location.state.productList.item_data;
-  console.log(productList);
+  // console.log(productList);
   const [isOpen, setIsOpen] = useState(false);
   const toggleOptions = () => {
     setIsOpen(!isOpen);
@@ -66,7 +67,9 @@ const Products = () => {
     <div className="products">
       {/* <div className="div"> */}
       <div className="text-input-container">
-        <div className="home-menu">Home</div>
+        <div className="home-menu">
+          <Link to="/">Home</Link>
+        </div>
         <div className="findastore-menu">Customer Service</div>
       </div>
       <div className="hero">

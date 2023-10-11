@@ -118,7 +118,7 @@ body {
   flex-grow: 1;
 }
 
-.div-2AndImage {
+.products .div-2AndImage {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -157,14 +157,14 @@ body {
   align-self: end;
 }
 
-.pAndText2 {
+.products .pAndText2 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   max-width: 100%;
 }
 
-.products .p {
+.products .products .p {
   color: #ffffff;
   font-family: "Overpass Mono", Helvetica;
   font-size: 16px;
@@ -208,6 +208,8 @@ body {
 
 .products .span {
   line-height: 32px;
+  color: #ffffff;
+  font-family: "Overpass Mono", Helvetica;
 }
 
 .products .hero {
@@ -228,11 +230,9 @@ body {
   align-items: flex-start;
   justify-content: space-start;
   max-width: 100%;
-
-  margin-top: 62px;
 }
 
-.img,
+.products .img,
 .image-2 {
   height: 82.6%;
   /* position: absolute;
@@ -244,11 +244,11 @@ body {
   box-shadow: 5px 5px 0 0px rgba(0, 0, 0, 1);
 }
 
-.img {
-  margin-left: 59px;
+.products .img {
+  margin-left: 42px;
 }
 
-.image-2 {
+.products .image-2 {
   margin-left: 20px;
   margin-right: 20px;
 }
@@ -260,7 +260,7 @@ body {
   top: 62px;
   width: 495px;
 } */
-.overlapGroups {
+.products .overlapGroups {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -398,13 +398,14 @@ body {
   background-size: auto;
 }
 
-.productsList {
+.products .productsList {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   flex-wrap: wrap;
 
   margin-top: 41px;
+  margin-left: 11px;
 }
 
 .products .checkbox {
@@ -426,12 +427,13 @@ body {
   /* position: absolute;
   top: 0; */
   width: 303px;
+  border-bottom: 2px solid;
+  border-color: #000000;
 }
 
 .products .text-input {
   background-color: #fff8ec;
-  border-top: 2px solid;
-  border-color: #000000;
+
   height: 230px;
   /* left: 0;
   position: absolute;
@@ -457,7 +459,7 @@ body {
 
 .products .cargotrousers {
   color: #000000;
-  font-family: "Overpass Mono", Helvetica;
+  font-family: "New Tegomin", Helvetica;
   font-size: 16px;
   font-weight: 700;
   letter-spacing: 0;
@@ -649,15 +651,15 @@ body {
   margin-top: 32px;
 }
 
-button {
+.products button {
   cursor: pointer;
 }
 
-.options-dropdown {
+.products .options-dropdown {
   transition: 0.3s;
 }
 
-.all-sort-options {
+.products .all-sort-options {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -696,7 +698,7 @@ button {
   background-color: rgba(1, 1, 1, 0.2);
 }
 
-.sort-options {
+.products .sort-options {
   color: transparent;
   font-family: "Overpass Mono", Helvetica;
   font-size: 25px;
@@ -718,11 +720,11 @@ button {
   transition: transform 1s ease; */
 }
 
-.sort-options:hover {
+.products .sort-options:hover {
   background-color: rgba(1, 1, 1, 0.1);
 }
 
-.sort-options:active {
+.products .sort-options:active {
   background-color: rgba(1, 1, 1, 0.2);
 }
 
@@ -742,7 +744,7 @@ button {
   left: -870px;
 }
 
-.visible {
+.products .visible {
   left: 0px;
   color: #000000;
 }

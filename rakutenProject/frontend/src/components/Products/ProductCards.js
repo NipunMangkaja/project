@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function ProductCards({ product }) {
   return (
@@ -9,7 +10,9 @@ function ProductCards({ product }) {
           <div className="cargotrousers">{product.title}</div>
           <div className="rs">￥{product.price}</div>
         </div>
-        <div className="cargotrousers-2">Buy Now</div>
+        <Link to={product.itemUrl} target="_blank">
+          <div className="cargotrousers-2">Buy Now</div>
+        </Link>
       </div>
     </div>
   );
